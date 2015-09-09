@@ -22,6 +22,13 @@ class BankAccount
                 end
                 balance
         end
+
+        def balance_inject
+               amounts = []
+               @transactions.each {|item| amounts.push(item[:amount])}
+               amounts.inject {|sum, n| sum + n}
+        end
+
         def to_s
                 "Name: #{name}, Balance #{sprintf("%0.2f", balance)}"
         end
@@ -47,3 +54,4 @@ bank_account.credit("Paycheck", 100)
 bank_account.debit("groceries", 40)
 puts bank_account
 puts bank_account.print_register()
+puts "Injected sum: " + bank_account.balance_inject().to_s
