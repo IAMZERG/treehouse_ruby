@@ -1,0 +1,4 @@
+# Logfile created on 2015-09-22 11:53:34 -0400 by logger.rb/31641
+I, [2015-09-22T11:53:34.530831 #3201]  INFO -- : This is a new message.
+E, [2015-09-22T11:53:34.530856 #3201] ERROR -- : This is an error
+W, [2015-09-22T11:53:34.530872 #3201]  WARN -- : Be careful!
