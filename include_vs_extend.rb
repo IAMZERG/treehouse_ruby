@@ -13,6 +13,7 @@ module Extendmethods
 	def extendedmethod 
 		puts "Ni Hao extend"
 	end
+
 end
 
 
