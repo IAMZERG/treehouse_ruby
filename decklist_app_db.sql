@@ -1,7 +1,7 @@
 #decklist app database
 #contains users, decks, cards, comments, privileges, changes
 
-DROP DATABASE decklist_app_db;
+#DROP DATABASE IF EXISTS decklist_app_db;
 CREATE DATABASE IF NOT EXISTS decklist_app_db;
 USE decklist_app_db;
 
@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS cards
 (id INTEGER PRIMARY KEY UNIQUE NOT NULL,
 card_name VARCHAR(140), 
 qty INTEGER);
+
 
 CREATE TABLE IF NOT EXISTS users
 (id INTEGER PRIMARY KEY UNIQUE NOT NULL,
@@ -65,8 +66,7 @@ grouping_name VARCHAR(50));
 CREATE TABLE IF NOT EXISTS groupings
 (id INTEGER PRIMARY KEY UNIQUE NOT NULL,
 user_id INTEGER,
-#grouping_name will commonly be sideboard.  could also be used as changes?
-grouping_name VARCHAR(100),
+#grouping_name will commonly be sideboard.  could also be used as changes
 grouping_type INTEGER,
 FOREIGN KEY (grouping_type) REFERENCES grouping_types(id),
 FOREIGN KEY (user_id) REFERENCES users(id),
