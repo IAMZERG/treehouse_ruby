@@ -1,0 +1,44 @@
+#decklist app database
+#contains users, decks, cards, comments, privileges, changes
+
+DROP DATABASE IF EXISTS decklist_app_db;
+CREATE DATABASE IF NOT EXISTS decklist_app_db;
+USE decklist_app_db;
+
+CREATE TABLE IF NOT EXISTS decks 
+(id INTEGER PRIMARY KEY UNIQUE NOT NULL,
+deck_name VARCHAR(100),
+cards_id INTEGER NULL,
+user_id INTEGER NOT NULL,
+#if a deck is an offshoot of something else, that will go here.
+parent_id INTEGER NULL);
+
+CREATE TABLE IF NOT EXISTS cards 
+(id INTEGER PRIMARY KEY UNIQUE NOT NULL,
+card_name VARCHAR(140), 
+qty INTEGER,
+deck_id INTEGER,
+FOREIGN KEY (deck_id) REFERENCES decks(id));
+
+ALTER TABLE decks ADD CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE decks ADD CONSTRAINT FOREIGN KEY (cards_id) REFERENCES cards(id);
+ALTER TABLE decks ADD CONSTRAINT FOREIGN KEY (parent_id) REFERENCES decks(id);
+
+CREATE TABLE IF NOT EXISTS comments
+(id INTEGER PRIMARY KEY UNIQUE NOT NULL,
+comment_title VARCHAR(100),
+user_id INTEGER,
+parent_id INTEGER);
+
+ALTER TABLE comments ADD CONSTRAINT FOREIGN KEY (parent_id) REFERENCES comments(id);
+ALTER TABLE comments ADD CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+
+
+
+
+
+
+
+

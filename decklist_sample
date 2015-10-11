@@ -1,0 +1,20 @@
+INSERT INTO users (username) VALUES 
+("Mark Rosewater"), 
+("Joel Larson"),
+("Pyotr Ilyich Tchaikovsky");
+INSERT INTO decks (deck_name, user_id, parent_id) VALUES 
+("All Islands", 1, NULL),
+("Swans", 2, NULL);
+
+INSERT INTO cards (card_name, qty, deck_id) VALUES
+("Island", 60, 1),
+("Swans of Bryn Argoll", 4, 2),
+("Seismic Assault", 4, 2),
+("Island", 25, 2),
+("Steam Vents", 2, 2),
+("Flooded Strand", 4, 2),
+("Mountain", 5, 2),
+("Arid Mesa", 4, 2);
+
+
+SELECT * FROM decks WHERE deck_name = "Swans";
